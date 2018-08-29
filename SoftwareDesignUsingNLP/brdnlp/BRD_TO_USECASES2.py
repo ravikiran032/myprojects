@@ -658,7 +658,7 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
                     #print(dataelement_summary)
                     #print("------")
                     (best_match_output_dataelement_function,best_match_output_dataelement_id) = extract_match(dataelement_summary, No_of_matches_data_elements, artifact4_df, "Short")
-            temp1 = temp1 +','+ str(best_match_output_dataelement_function)
+            temp1 = temp1 + str(best_match_output_dataelement_function)
             #print("best elemenets ",temp1)
         
         
@@ -690,6 +690,12 @@ temp_df=SimMean[SimMean["ID"].duplicated(keep=False)]
 merged_df=temp_df.astype(str).groupby(temp_df.ID, as_index=False).agg(','.join)
 temp_df=SimMean.drop(temp_df.index,axis=0).append(merged_df,ignore_index=True).sort_values("ID").drop(columns="ID")
 SimMean = temp_df
+#------
+#SimMean = temp_df.loc[:,"Attributes"].str.replace(',','],[')
+    
+    
+    
+#-------------------
 SimMean['User']=temp_df['User'].str.split(',').apply(set).str.join("")     
 
 writer = pd.ExcelWriter(Path+'../data/final_output_banking_2.xlsx')
