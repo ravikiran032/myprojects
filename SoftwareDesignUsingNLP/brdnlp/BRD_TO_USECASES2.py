@@ -647,7 +647,7 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
         (best_match_output_domain_function,best_match_output_domain_id) = extract_match(summary, No_of_matches_user_function, artifact3_df,"User Function")
         #print(best_match_output_domain_id)
         artifact1_df.set_value(index, 'Functionality', best_match_output_domain_function)
-        print("************")
+        #print("************")
         for index2 in best_match_output_domain_id:
             #print(index2)
         
