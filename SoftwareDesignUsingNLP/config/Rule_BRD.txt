@@ -19,7 +19,7 @@
                 },
 				{
 				  "tag": "DE_ACTION",
-                  "pattern": "ACTION:{<VB.?>+(<TO>|<DT>|<PRP.?>|<IN>|<JJ>)*<NN.?|NNPS>+}"
+                  "pattern": "ACTION:{<VB.?>|<NN.?|NNPS>}"
 				}
               ]
             }
