@@ -103,17 +103,14 @@ def regex_tagging(tag,regex,text):
     return regex_list
 
 def BRD_chunk_tagging(tag,chunk,text):
-    """ Tag the text using chunking.
-    """
-    # global grammer
-    # parsed_chink = nltk.RegexpParser(grammer)
-    # parsed_chink.parse(text).draw()
+    """ Tag the text using chunking."""
+
     
     parsed_cp = nltk.RegexpParser(chunk)
     pos_cp = parsed_cp.parse(text)
     #pos_cp.draw()
     
-    #pos_cp = chunk_sentence(text) #*** use this for getting refined output after chinking but extra entities in output
+
     chunk_list=[]
     for root in pos_cp:
         if isinstance(root, nltk.tree.Tree):               
@@ -122,8 +119,7 @@ def BRD_chunk_tagging(tag,chunk,text):
                 for child_root in root:
                     chunk_word = chunk_word +' '+ child_root[0]
                 chunk_list.append(chunk_word)
-    #print("txt: ",text)
-    #print(chunk_list)
+
     return chunk_list
 
     
@@ -262,7 +258,7 @@ def compute_text_similarity(text1, text2, text1tags, text2tags):
     if numpy.isnan(cosine_similarity):
         cosine_similarity = 0
     '''
-    with open(Path+"data/cosinesimilarity.txt","a") as fp:
+    with open(Path+"../data/cosinesimilarity.txt","a") as fp:
         fp.write(str(tokens1Filtered))
         fp.write("\n")
         fp.write("                           -------vs---------                 ")
@@ -342,7 +338,7 @@ def mod_req_text_classifier_output(artifact_df, BRD_config, output_column_name,D
         #print(summary)
         classifier_journey_output = classify_BRD_text(summary, BRD_config,DOC_TYPE)
         #print("classifieer ourney out",classifier_journey_output)
-        artifact_df.set_value(index, output_column_name, classifier_journey_output)
+        artifact_df.at[index, output_column_name]= classifier_journey_output
         
        
     return artifact_df 
@@ -357,7 +353,7 @@ def add_text_classifier_output(artifact_df, config, output_column_name, DOC_TYPE
         #print(summary)
         classifier_journey_output = classify_BRD_text(summary, BRD_config,DOC_TYPE)
         #print(classifier_journey_output)
-        artifact_df.set_value(index, output_column_name, classifier_journey_output)
+        artifact_df.at[index, output_column_name]= classifier_journey_output
     return artifact_df 
            
 def add_keywords_entities(artifact_df, classify_text_column_name, output_column_name):
@@ -376,7 +372,7 @@ def add_keywords_entities(artifact_df, classify_text_column_name, output_column_
                 
                 keywords_array.append(entities['text'])
 
-        artifact_df.set_value(index, output_column_name, keywords_array)
+        artifact_df.at[index, output_column_name]= keywords_array
         #print(keywords_array)
     return artifact_df 
 
@@ -423,7 +419,7 @@ def populate_text_similarity_score(artifact_df1, artifact_df2, keywords_column_n
             if obj['cosine_score'] > 0.55:
                 top_matches.append(obj)
                
-        artifact_df1.set_value(index1, output_column_name, top_matches)
+        artifact_df1.at[index1, output_column_name]= top_matches
     return artifact_df1
 
 
@@ -578,13 +574,13 @@ def extract_action(summary):
         return entities
 
 def lookup_use_case(temp,artifact3_df,column_name):
-    #print(artifact3_df.get_value(0,'ID'))
+    #print(artifact3_df.(0,'ID'))
     val = ""
     rowNum = len(artifact3_df.index)
     #print(rowNum)
     for j in range(0,rowNum):
-        if temp == artifact3_df.get_value(j,'ID'):
-            val = artifact3_df.get_value(j,column_name)
+        if temp == artifact3_df.at[j,'ID']:
+            val = artifact3_df.at[j,column_name]
             #print(val)
     
     return val       
@@ -626,7 +622,7 @@ def extract_action_requirements_df(artifact1_df, artifact2_df):
         #print("summary ",summary)
         classifier_journey_output = extract_action(summary)
         #print("classifer out",classifier_journey_output)
-        artifact1_df.set_value(index, 'Use Case', classifier_journey_output)
+        artifact1_df.at[index, 'Use Case']= classifier_journey_output
         
     return artifact1_df 
 
@@ -646,15 +642,15 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
         #print(summary)
         (best_match_output_domain_function,best_match_output_domain_id) = extract_match(summary, No_of_matches_user_function, artifact3_df,"User Function")
         #print(best_match_output_domain_id)
-        artifact1_df.set_value(index, 'Functionality', best_match_output_domain_function)
+        artifact1_df.at[index, 'Functionality']= best_match_output_domain_function
         #print("************")
         for index2 in best_match_output_domain_id:
             #print(index2)
         
             row_domain = len(artifact3_df.index)
             for p in range(0,row_domain):
-                if index2 == artifact3_df.get_value(p,'ID'):
-                    dataelement_summary = artifact3_df.get_value(p,'DataElementsMatchScore')
+                if index2 == artifact3_df.at[p,'ID']:
+                    dataelement_summary = artifact3_df.at[p,'DataElementsMatchScore']
                     #print(dataelement_summary)
                     #print("------")
                     (best_match_output_dataelement_function,best_match_output_dataelement_id) = extract_match(dataelement_summary, No_of_matches_data_elements, artifact4_df, "Short")
@@ -663,7 +659,7 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
         
         
 
-        artifact1_df.set_value(index, 'Attributes', temp1)
+        artifact1_df.at[index, 'Attributes']= temp1
         
     return artifact1_df 
 
