@@ -185,6 +185,8 @@ def compute_text_similarity(text1, text2, text1tags, text2tags):
     """ Compute text similarity using cosine
     """
     #stemming is the process for reducing inflected (or sometimes derived) words to their stem, base or root form
+    
+        
     tokens_text1 = []
     tokens_text2 = []
     stemmer = nltk.stem.porter.PorterStemmer()#.WordNetLemmatizer()
@@ -257,7 +259,7 @@ def compute_text_similarity(text1, text2, text1tags, text2tags):
     cosine_similarity = 1-cosine_distance(text1vector,text2vector)
     if numpy.isnan(cosine_similarity):
         cosine_similarity = 0
-    '''
+    
     with open(Path+"../data/cosinesimilarity.txt","a") as fp:
         fp.write(str(tokens1Filtered))
         fp.write("\n")
@@ -267,10 +269,9 @@ def compute_text_similarity(text1, text2, text1tags, text2tags):
         fp.write("\n")
         fp.write(str(cosine_similarity))
         fp.write("\n")
-        fp.write("\n")'''
+        fp.write("\n")
         
-    return cosine_similarity
- 
+    return cosine_similarity 
 
 def load_artifacts():
     global requirements_df 
@@ -398,28 +399,25 @@ def populate_text_similarity_score(artifact_df1, artifact_df2, keywords_column_n
     for index1, artifact1 in artifact_df1.iterrows():
         matches = []
         top_matches = []
-        for index2, artifact2 in artifact_df2.iterrows():
-            matches.append({'ID': artifact2['ID'], 
+        for tag in artifact1['Keywords']:
+            tags=[]
+            tags.extend(eval('["'+tag+'"]'))
+            for index2, artifact2 in artifact_df2.iterrows():
+                matches.append({'ID': artifact2['ID'], 
                             'cosine_score': 0, 
                             'SubjectID':artifact1['ID']})
-            cosine_score = compute_text_similarity(
-                #artifact1[\'Description\'], 
-                #artifact2[\'Description\'], 
-                artifact1[heading1],
-                artifact2[heading2],
-                artifact1['Keywords'], 
-                artifact2['Keywords'])
-            matches[index2]["cosine_score"] = cosine_score
+                cosine_score = compute_text_similarity(artifact1[heading1],artifact2[heading2],tags,artifact2['Keywords'])
+                matches[index2]["cosine_score"] = cosine_score
        
-        sorted_obj = sorted(matches, key=lambda x : x['cosine_score'], reverse=True)
+            sorted_obj = sorted(matches, key=lambda x : x['cosine_score'], reverse=True)
     
     # This is where the lower cosine value to be truncated is set and needs to be adjusted based on output
     
-        for obj in sorted_obj:
-            if obj['cosine_score'] > 0.55:
-                top_matches.append(obj)
+            for obj in sorted_obj:
+                if obj['cosine_score'] > 0.6:
+                    top_matches.append(obj)
                
-        artifact_df1.at[index1, output_column_name]= top_matches
+            artifact_df1.at[index1, output_column_name]= top_matches
     return artifact_df1
 
 
@@ -654,6 +652,7 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
                     #print(dataelement_summary)
                     #print("------")
                     (best_match_output_dataelement_function,best_match_output_dataelement_id) = extract_match(dataelement_summary, No_of_matches_data_elements, artifact4_df, "Short")
+            best_match_output_dataelement_function = set(best_match_output_dataelement_function)        
             temp1 = temp1 + str(best_match_output_dataelement_function)
             #print("best elemenets ",temp1)
         
