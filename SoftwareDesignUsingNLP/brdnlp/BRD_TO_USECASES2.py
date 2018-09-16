@@ -31,7 +31,7 @@ from nltk.tokenize.punkt import PunktSentenceTokenizer
 # Name of the excel file with data in S3 Storage
 #BrdFileName = "Banking-BRD.xlsx"
 # Choose or get as an input as to which Domain it belongs to i.e banking, healthcare etc
-Domain = "Banking"
+Domain = ""
 
 # Name of the config files in Object Storage. Rule_brd will be used specifically for parsing requirement document
 #configFileName = "config/sample_config.txt"
@@ -44,17 +44,17 @@ Path = ""
 
 # Requirements dataframe
 requirements_file_name = "../data/Requirements.xlsx"
-requirements_sheet_name = "".join((Domain,"-Requirements"))
+requirements_sheet_name = "".join((Domain,"Requirements"))
 requirements_df = None
 
 # Domain/UseCase dataframe
 domain_file_name = "../data/Domain.xlsx"
-domain_sheet_name = "".join((Domain,"-Domain"))
+domain_sheet_name = "".join((Domain,"Domain"))
 domain_df = None
 
 # DataElements dataframe
 dataelements_file_name ="../data/DataElements.xlsx"
-dataelements_sheet_name ="".join((Domain,"-Dataelements"))
+dataelements_sheet_name ="".join((Domain,"Dataelements"))
 dataelements_df = None
 
 #grammer = """Ravi:{<VB.?>+(<TO>|<DT>|<PRP.?>|<IN>|<JJ>)*<NN.?|NNPS>+}""" 
