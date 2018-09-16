@@ -1,0 +1,14 @@
+Class <class name>{
+  private To_AcctNum=0;
+  private  From_AcctNum=0;
+  private  Cus_Nme=0;
+  private  Acc_num=0;
+  private  Debit_pin=0;
+
+  void Apply loan{
+ 
+ 
+ --------- code section-----
+
+}
+  }

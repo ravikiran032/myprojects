@@ -1,0 +1,13 @@
+Class <class name>{
+  private Loan_Amt=0;
+  private  Cust_Addr=0;
+  private  Cus_Nme=0;
+  private  Acc_num=0;
+
+  void Pay Bills {
+ 
+ 
+ --------- code section-----
+
+}
+  }

@@ -11,11 +11,11 @@
               "chunk": [
                 {
                   "tag": "REQ_ACTION",
-                  "pattern": "ACTION:{<VB.?>+(<TO>|<DT>|<RB.?>|<PRP.?>|<IN>|<JJ>)*<NN.?|NNPS>+}"
+                  "pattern": "ACTION:{<VB.?>+(<TO>|<DT>|<RB.?>|<PRP.?>|<IN>|<JJ.?>)*<NN.?|NNPS>+ (<PRP.?>|<VB.?>|<TO> |<CC>|JJ.?)* <NN.?|NNPS>*}"
                 },
 				{
                   "tag": "DOMAIN_ACTION",
-                  "pattern": "ACTION:{<VB.?>+(<TO>|<DT>|<RB.?>|<PRP.?>|<IN>|<JJ>)*<NN.?|NNPS>+}"
+                  "pattern": "ACTION:{(<VB.?>+(<TO>|<DT>|<RB.?>|<PRP.?>|<IN>|<JJ.?>)*<NN.?|NNPS>+)|(<VB.?>|<NN.?>|<NNPS>)}"
                 },
 				{
 				  "tag": "DE_ACTION",

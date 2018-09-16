@@ -179,7 +179,7 @@ def classify_BRD_text(text, config, DOC_TYPE):
 
 stopWords = get_stop_words('english')
 # List of words to be ignored for text similarity
-stopWords.extend(["The","This","That",".","!","?"])
+stopWords.extend(["The","This","That",".","!","?","deals","use","case","function"])
 
 def compute_text_similarity(text1, text2, text1tags, text2tags):
     """ Compute text similarity using cosine
@@ -260,16 +260,6 @@ def compute_text_similarity(text1, text2, text1tags, text2tags):
     if numpy.isnan(cosine_similarity):
         cosine_similarity = 0
     
-    with open(Path+"../data/cosinesimilarity.txt","a") as fp:
-        fp.write(str(tokens1Filtered))
-        fp.write("\n")
-        fp.write("                           -------vs---------                 ")
-        fp.write("\n")
-        fp.write(str(tokens2Filtered))
-        fp.write("\n")
-        fp.write(str(cosine_similarity))
-        fp.write("\n")
-        fp.write("\n")
         
     return cosine_similarity 
 
@@ -414,7 +404,7 @@ def populate_text_similarity_score(artifact_df1, artifact_df2, keywords_column_n
     # This is where the lower cosine value to be truncated is set and needs to be adjusted based on output
     
             for obj in sorted_obj:
-                if obj['cosine_score'] > 0.6:
+                if obj['cosine_score'] > 0.55:
                     top_matches.append(obj)
                
             artifact_df1.at[index1, output_column_name]= top_matches
@@ -515,39 +505,37 @@ output_column_name = "Keywords"
 requirements_df = add_keywords_entities(requirements_df, classify_text_column_name, output_column_name)
 domain_df = add_keywords_entities(domain_df, classify_text_column_name, output_column_name)
 dataelements_df = add_keywords_entities(dataelements_df, classify_text_column_name, output_column_name)
+'''
+writer = pd.ExcelWriter(Path+'../output/intermediate_before.xlsx')
+requirements_df.to_excel(writer,sheet_name='Requirements')
+domain_df.to_excel(writer,sheet_name='domain')
+dataelements_df.to_excel(writer,sheet_name='dataelements')
+writer.save()'''
 
-
-
-
+temp_df = pd.DataFrame(data=None, columns=requirements_df.columns, index=None)
 
 for index,row in requirements_df.iterrows():
     #print("row in requirents after keywords: ",row.loc['Keywords'])
     action_keywords = row.loc['Keywords']
     #classified_text = row.loc['ClassifiedText']
     
-    if len(action_keywords)>1:
-        # print(action_keywords)
-        # print("index ",index)
-        #print("upto index ",requirements_df.loc[0:index-1,'Keywords'])
-        #print(" index ",requirements_df.loc[index,'Keywords'])
-        #print("after index ",requirements_df.loc[index+1:,'Keywords'])
-        pre_index_df=requirements_df.loc[0:index-1,:]
-        post_index_df=requirements_df.loc[index+1:,:]
+    if len(action_keywords)>0:
+
         for action in action_keywords:
-            temp=[]
-            line = requirements_df.loc[index,:]
+            
+            line = row
             line['Keywords']=eval('["'+action+'"]')
-           
-            pre_index_df=pre_index_df.append(line,ignore_index=False)
-            #print("modified df ", pre_index_df.append(line))
-            #i=i+1
-        requirements_df = pre_index_df.append(post_index_df,ignore_index=True)
+            temp_df = temp_df.append(line,ignore_index=True)           
 
+        
+requirements_df = temp_df
 
-# ** Correlate keywords between artifacts **
-# * Add the text similarity score of associated artifacts to the dataframe
-
-# In[22]:
+#to check intermediate output
+'''writer = pd.ExcelWriter(Path+'../output/intermediate.xlsx')
+requirements_df.to_excel(writer,sheet_name='Requirements')
+domain_df.to_excel(writer,sheet_name='domain')
+dataelements_df.to_excel(writer,sheet_name='dataelements')
+writer.save()'''
 
 
 keywords_column_name = "Keywords"
@@ -681,18 +669,39 @@ SimMean.loc[0:no_of_rows_brd,'User'] = requirements_df.loc[0:no_of_rows_brd,'As 
 SimMean = extract_action_requirements_df(SimMean,requirements_df)
 SimMean = extract_bestmatch(SimMean,requirements_df,domain_df,dataelements_df)
 
+
+for index,rows in SimMean.iterrows():
+    fct_names = rows["Functionality"]
+    dataelements = rows["Attributes"].split('}{')
+    i=0
+    unwanted_chars = ['{','}','\'']
+    for fct in fct_names:
+        de=dataelements[i]
+        for ch in unwanted_chars:
+            de=de.replace(ch,"")
+ 
+        with open("../output/"+fct+".txt","w") as fp:
+            fp.write("Class <class name>{\n")
+            for element in de.split(','):
+                fp.write("  private "+element+"=0;\n")
+            fp.write("\n  void "+fct+'{'+"\n \n \n --------- code section-----"+"\n"+"\n"+"}"+"\n  }")
+        i=1    
+            
 temp_df=SimMean[SimMean["ID"].duplicated(keep=False)]
 merged_df=temp_df.astype(str).groupby(temp_df.ID, as_index=False).agg(','.join)
 temp_df=SimMean.drop(temp_df.index,axis=0).append(merged_df,ignore_index=True).sort_values("ID").drop(columns="ID")
 SimMean = temp_df
-#------
-#SimMean = temp_df.loc[:,"Attributes"].str.replace(',','],[')
-    
-    
-    
-#-------------------
+
 SimMean['User']=temp_df['User'].str.split(',').apply(set).str.join("")     
 
-writer = pd.ExcelWriter(Path+'../data/final_output_banking_2.xlsx')
+writer = pd.ExcelWriter(Path+'../data/output.xlsx')
 SimMean.to_excel(writer, sheet_name='Sheet1',index=False)
 writer.save()
+
+
+
+
+            
+        
+        
+        

@@ -1,0 +1,14 @@
+Class <class name>{
+  private Cred_Score=0;
+  private  Cust_Addr=0;
+  private  Cus_Nme=0;
+  private  Acc_num=0;
+  private  Loan_Amt=0;
+
+  void Credit_check{
+ 
+ 
+ --------- code section-----
+
+}
+  }
