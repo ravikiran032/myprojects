@@ -1,0 +1,13 @@
+Class <class name>{
+  private Preventive_care=0;
+  private  Policy_coverage_details=0;
+  private  Patient_Address=0;
+  private  List_plan=0;
+
+  void Offer Plan{
+ 
+ 
+ --------- code section-----
+
+}
+  }

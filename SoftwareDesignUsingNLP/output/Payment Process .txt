@@ -1,0 +1,14 @@
+Class <class name>{
+  private Policy_number=0;
+  private  Discharge_amount=0;
+  private  Patient_age=0;
+  private  Acc_type=0;
+  private  Patient_Name=0;
+
+  void Payment Process {
+ 
+ 
+ --------- code section-----
+
+}
+  }

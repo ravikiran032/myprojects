@@ -1,0 +1,14 @@
+Class <class name>{
+  private Customer_phone=0;
+  private  Patient_Name=0;
+  private  Doctor_Name=0;
+  private  Patient_age=0;
+  private  Schedule_time=0;
+
+  void View reports{
+ 
+ 
+ --------- code section-----
+
+}
+  }
