@@ -1,0 +1,25 @@
+Class plan_the_stay{
+  private List_plan=0;
+  private  Name_of_clinics=0;
+  private  Preventive_care=0;
+  private Patient_age=0;
+  private  Schedule_time=0;
+  private  Name_of_clinics=0;
+  private  Customer_phone=0;
+
+  void Offer_Plan{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Patient_Admission{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

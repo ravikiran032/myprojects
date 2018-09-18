@@ -1,0 +1,25 @@
+Class schedule_my_visit_online{
+  private doctor_licence_number=0;
+  private  Coverage_policy=0;
+  private  Doctor_Name=0;
+  private  Hourly_charge_doctor=0;
+  private  hospital_department=0;
+  private Schedule_time=0;
+  private  Doctor_available_time=0;
+
+  void Recruit_Visiting_Doctors{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Schedule_visit{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

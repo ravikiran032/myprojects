@@ -1,0 +1,27 @@
+Class  review all transactions{
+  private Loan_Amt=0;
+  private  Cus_Nme=0;
+  private  Amt_deposit=0;
+  private  Bill_amt=0;
+  private Amt_avail=0;
+  private  Debit_pin=0;
+  private  Acc_num=0;
+  private  To_AcctNum=0;
+  private  From_AcctNum=0;
+
+  void Review_transactions{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void View_Account {
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

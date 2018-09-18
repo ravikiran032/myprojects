@@ -1,0 +1,28 @@
+Class  apply for a loan{
+  private Amt_avail=0;
+  private  From_AcctNum=0;
+  private  Loan_purp=0;
+  private  To_AcctNum=0;
+  private  Loan_Amt=0;
+  private Amt_avail=0;
+  private  From_AcctNum=0;
+  private  Cred_Score=0;
+  private  To_AcctNum=0;
+  private  Loan_Amt=0;
+
+  void Apply_loan{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Credit_check{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

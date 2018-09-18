@@ -1,0 +1,13 @@
+Class work_with_various_employers{
+  private doctor_licence_number=0;
+  private  Doctor_Name=0;
+  private  hospital_department=0;
+
+  void Recruit_Doctors{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

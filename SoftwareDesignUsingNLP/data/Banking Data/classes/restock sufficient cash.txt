@@ -1,0 +1,26 @@
+Class  restock sufficient cash{
+  private Amt_deposit=0;
+  private  Acc_type=0;
+  private  Bill_amt=0;
+  private  Max_limit=0;
+  private Amt_deposit=0;
+  private  Max_limit=0;
+  private  Bill_amt=0;
+  private  Loan_Amt=0;
+
+  void Restock_cash{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Limit_Cash{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

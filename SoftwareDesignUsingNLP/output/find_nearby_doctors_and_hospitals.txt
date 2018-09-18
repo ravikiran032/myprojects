@@ -1,0 +1,25 @@
+Class find_nearby_doctors_and_hospitals{
+  private X=0;
+  private Y_Coordinates=0;
+  private Customer_phone=0;
+  private  Doctor_Name=0;
+  private  Hospital_Address=0;
+  private  Patient_prior_condition=0;
+  private  Patient_age=0;
+
+  void List_of_hospitals_under_plan{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Contact_doctor{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

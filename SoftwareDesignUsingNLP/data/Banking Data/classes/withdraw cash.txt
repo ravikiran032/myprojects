@@ -1,0 +1,28 @@
+Class  withdraw cash{
+  private Debit_pin=0;
+  private  Max_limit=0;
+  private  Bill_type=0;
+  private  Amt_wdrl=0;
+  private  Bill_amt=0;
+  private Amt_avail=0;
+  private  Debit_pin=0;
+  private  To_AcctNum=0;
+  private  Cus_Nme=0;
+  private  From_AcctNum=0;
+
+  void Withdraw_cash{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Verify_PIN{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

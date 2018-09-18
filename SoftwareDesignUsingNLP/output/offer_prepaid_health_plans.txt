@@ -1,0 +1,13 @@
+Class offer_prepaid_health_plans{
+  private List_plan=0;
+  private  Name_of_clinics=0;
+  private  Preventive_care=0;
+
+  void Offer_Plan{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

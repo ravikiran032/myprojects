@@ -1,0 +1,14 @@
+Class emphasize_more_on_preventive_care_to_my_patients{
+  private Acc_type=0;
+  private  Address_Of_clinics=0;
+  private  Hospital_Address=0;
+  private  Preventive_care=0;
+
+  void Provide_reccommendation{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

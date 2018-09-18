@@ -1,0 +1,15 @@
+Class pay_my_medical_bills_online{
+  private Acc_type=0;
+  private  Schedule_time=0;
+  private  Doctor_Name=0;
+  private  Hospital_Address=0;
+  private  Discharge_amount=0;
+
+  void Payment_Process_{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

@@ -1,0 +1,28 @@
+Class  review the credit history and{
+  private Amt_avail=0;
+  private  Debit_pin=0;
+  private  Acc_num=0;
+  private  To_AcctNum=0;
+  private  From_AcctNum=0;
+  private Amt_avail=0;
+  private  From_AcctNum=0;
+  private  Cred_Score=0;
+  private  To_AcctNum=0;
+  private  Loan_Amt=0;
+
+  void View_Account {
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Credit_check{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

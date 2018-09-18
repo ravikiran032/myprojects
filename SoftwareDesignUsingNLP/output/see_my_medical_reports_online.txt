@@ -1,0 +1,12 @@
+Class see_my_medical_reports_online{
+  private Schedule_time=0;
+  private  Doctor_available_time=0;
+
+  void Schedule_visit{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

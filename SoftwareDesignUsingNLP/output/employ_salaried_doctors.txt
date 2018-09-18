@@ -1,0 +1,26 @@
+Class employ_salaried_doctors{
+  private doctor_licence_number=0;
+  private  Doctor_Name=0;
+  private  hospital_department=0;
+  private doctor_licence_number=0;
+  private  Coverage_policy=0;
+  private  Doctor_Name=0;
+  private  Hourly_charge_doctor=0;
+  private  hospital_department=0;
+
+  void Recruit_Doctors{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Recruit_Visiting_Doctors{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

@@ -1,0 +1,27 @@
+Class  limit the cash withdrawl{
+  private Amt_deposit=0;
+  private  Max_limit=0;
+  private  Bill_amt=0;
+  private  Loan_Amt=0;
+  private Debit_pin=0;
+  private  Max_limit=0;
+  private  Bill_type=0;
+  private  Amt_wdrl=0;
+  private  Bill_amt=0;
+
+  void Limit_Cash{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Withdraw_cash{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

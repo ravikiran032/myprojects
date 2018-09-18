@@ -1,0 +1,13 @@
+Class shift_their_care_to_outpatient_clinics{
+  private Preventive_care=0;
+  private  Address_Of_clinics=0;
+  private  Policy_number=0;
+
+  void Patient_Transfer{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

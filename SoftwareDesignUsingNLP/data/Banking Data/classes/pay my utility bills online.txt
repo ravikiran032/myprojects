@@ -1,0 +1,21 @@
+Class  pay my utility bills online{
+  private Bill_type=0;
+  private  Bill_amt=0;
+  private  Acc_type=0;
+
+  void Pay_Bills {
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+
+  void Utility{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}

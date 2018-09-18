@@ -1,0 +1,15 @@
+Class paid_per_service{
+  private Customer_phone=0;
+  private  Doctor_Name=0;
+  private  Hospital_Address=0;
+  private  Patient_prior_condition=0;
+  private  Patient_age=0;
+
+  void Contact_doctor{
+ 
+ 
+ --------- code section-----
+
+  }
+ 
+}
