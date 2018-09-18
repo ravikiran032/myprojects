@@ -389,14 +389,16 @@ def populate_text_similarity_score(artifact_df1, artifact_df2, keywords_column_n
     for index1, artifact1 in artifact_df1.iterrows():
         matches = []
         top_matches = []
-        for tag in artifact1['Keywords']:
-            tags=[]
-            tags.extend(eval('["'+tag+'"]'))
+        #for tag in artifact1['Keywords']:
+        if(True): # replace with above for statement to run the code with each tag instead of whole keywords
+            
+            #tags=[]
+            #tags.extend(eval('["'+tag+'"]'))
             for index2, artifact2 in artifact_df2.iterrows():
                 matches.append({'ID': artifact2['ID'], 
                             'cosine_score': 0, 
                             'SubjectID':artifact1['ID']})
-                cosine_score = compute_text_similarity(artifact1[heading1],artifact2[heading2],tags,artifact2['Keywords'])
+                cosine_score = compute_text_similarity(artifact1[heading1],artifact2[heading2],artifact1['Keywords'],artifact2['Keywords'])
                 matches[index2]["cosine_score"] = cosine_score
        
             sorted_obj = sorted(matches, key=lambda x : x['cosine_score'], reverse=True)
@@ -537,7 +539,7 @@ domain_df.to_excel(writer,sheet_name='domain')
 dataelements_df.to_excel(writer,sheet_name='dataelements')
 writer.save()'''
 
-
+#a = time.time()
 keywords_column_name = "Keywords"
 output_column_name = "DomainMatchScore"
 requirements_df = populate_text_similarity_score(requirements_df, domain_df, keywords_column_name, output_column_name)
@@ -549,7 +551,7 @@ output_column_name = "RequirementsMatchScore"
 dataelements_df = populate_text_similarity_score(dataelements_df, requirements_df, keywords_column_name, output_column_name)
 
 
-
+#print(time.time()-a)
 # # This section will be used to create the Output in excell format
 
 # In[59]:
@@ -592,10 +594,7 @@ def extract_match(summary,no_of_matches,artifact3_df,column_name):
         match_array_description.append(use_case)
         #print(use_case)
             
-    
-    #print("************")
-    #print(match_array_id)       
-    #print("************")
+
     return (match_array_description,match_array_id)
 
         
@@ -640,8 +639,10 @@ def extract_bestmatch(artifact1_df, artifact2_df, artifact3_df, artifact4_df):
                     #print(dataelement_summary)
                     #print("------")
                     (best_match_output_dataelement_function,best_match_output_dataelement_id) = extract_match(dataelement_summary, No_of_matches_data_elements, artifact4_df, "Short")
-            best_match_output_dataelement_function = set(best_match_output_dataelement_function)        
+            if best_match_output_dataelement_function:
+                best_match_output_dataelement_function = set(best_match_output_dataelement_function)        
             temp1 = temp1 + str(best_match_output_dataelement_function)
+            
             #print("best elemenets ",temp1)
         
         
@@ -669,23 +670,33 @@ SimMean.loc[0:no_of_rows_brd,'User'] = requirements_df.loc[0:no_of_rows_brd,'As 
 SimMean = extract_action_requirements_df(SimMean,requirements_df)
 SimMean = extract_bestmatch(SimMean,requirements_df,domain_df,dataelements_df)
 
+#SimMean.loc[SimMean['Attributes']].astype(str).replace('[','{').replace(']','}')
+'''writer = pd.ExcelWriter(Path+'../data/intemediate.xlsx')
+SimMean.to_excel(writer, sheet_name='Sheet1',index=False)
+writer.save()'''
+
+
 
 for index,rows in SimMean.iterrows():
     fct_names = rows["Functionality"]
-    dataelements = rows["Attributes"].split('}{')
-    i=0
-    unwanted_chars = ['{','}','\'']
-    for fct in fct_names:
-        de=dataelements[i]
-        for ch in unwanted_chars:
-            de=de.replace(ch,"")
- 
-        with open("../output/"+fct+".txt","w") as fp:
-            fp.write("Class <class name>{\n")
-            for element in de.split(','):
+    dataelements = str(rows["Attributes"]).replace('}{',',')
+    class_name = rows["Use Case"]
+    #print(dataelements)
+    
+    unwanted_chars = ['{','}','\'','[',']']
+    
+    for ch in unwanted_chars:
+        dataelements=dataelements.replace(ch,"")
+    with open("../output/"+str(class_name).strip().replace(' ', '_')+".txt","w") as fp:
+        fp.write("Class "+str(class_name).strip().replace(' ', '_')+"{\n")
+        if len(dataelements) > 0 :
+            for element in dataelements.split(','):
                 fp.write("  private "+element+"=0;\n")
-            fp.write("\n  void "+fct+'{'+"\n \n \n --------- code section-----"+"\n"+"\n"+"}"+"\n  }")
-        i=1    
+        for fct in fct_names:
+            fp.write("\n  void "+str(fct).replace(' ', '_')+'{'+"\n \n \n --------- code section-----"+"\n"+"\n"+"  }"+"\n \n")
+        fp.write("}")
+            
+  
             
 temp_df=SimMean[SimMean["ID"].duplicated(keep=False)]
 merged_df=temp_df.astype(str).groupby(temp_df.ID, as_index=False).agg(','.join)
