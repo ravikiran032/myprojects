@@ -677,24 +677,23 @@ writer.save()'''
 
 
 
-for index,rows in SimMean.iterrows():
-    fct_names = rows["Functionality"]
-    dataelements = str(rows["Attributes"]).replace('}{',',')
-    class_name = rows["Use Case"]
-    #print(dataelements)
-    
-    unwanted_chars = ['{','}','\'','[',']']
-    
-    for ch in unwanted_chars:
-        dataelements=dataelements.replace(ch,"")
-    with open("../output/"+str(class_name).strip().replace(' ', '_')+".txt","w") as fp:
+
+with open("../output/code_skeleton.txt","w") as fp:
+           
+    for index,rows in SimMean.iterrows():
+        fct_names = rows["Functionality"]
+        dataelements = str(rows["Attributes"]).replace('}{',',')
+        class_name = rows["Use Case"]
+        unwanted_chars = ['{','}','\'','[',']']
+        for ch in unwanted_chars:
+            dataelements=dataelements.replace(ch,"")
         fp.write("Class "+str(class_name).strip().replace(' ', '_')+"{\n")
         if len(dataelements) > 0 :
             for element in dataelements.split(','):
-                fp.write("  private "+element+"=0;\n")
+                 fp.write("  private "+element+"=0;\n")
         for fct in fct_names:
             fp.write("\n  void "+str(fct).replace(' ', '_')+'{'+"\n \n \n --------- code section-----"+"\n"+"\n"+"  }"+"\n \n")
-        fp.write("}")
+        fp.write("}\n")
             
   
             
