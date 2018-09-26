@@ -3,7 +3,13 @@ Class work_with_various_employers{
   private  Doctor_Name=0;
   private  doctor_licence_number=0;
 
-  void Recruit_Doctors{
+  void Recruit_Doctors{    
+hospital_department=0;
+    
+ Doctor_Name=0;
+    
+ doctor_licence_number=0;
+
  
  
  --------- code section-----
@@ -12,11 +18,17 @@ Class work_with_various_employers{
  
 }
 Class offer_prepaid_health_plans{
-  private Name_of_clinics=0;
+  private Preventive_care=0;
+  private  Name_of_clinics=0;
   private  List_plan=0;
-  private  Preventive_care=0;
 
-  void Offer_Plan{
+  void Offer_Plan{    
+Preventive_care=0;
+    
+ Name_of_clinics=0;
+    
+ List_plan=0;
+
  
  
  --------- code section-----
@@ -25,15 +37,21 @@ Class offer_prepaid_health_plans{
  
 }
 Class plan_the_stay{
-  private Name_of_clinics=0;
-  private  List_plan=0;
-  private  Preventive_care=0;
-  private Patient_age=0;
-  private  Customer_phone=0;
+  private Preventive_care=0;
   private  Name_of_clinics=0;
+  private  List_plan=0;
+  private Patient_age=0;
   private  Schedule_time=0;
+  private  Name_of_clinics=0;
+  private  Customer_phone=0;
 
-  void Offer_Plan{
+  void Offer_Plan{    
+Preventive_care=0;
+    
+ Name_of_clinics=0;
+    
+ List_plan=0;
+
  
  
  --------- code section-----
@@ -41,7 +59,15 @@ Class plan_the_stay{
   }
  
 
-  void Patient_Admission{
+  void Patient_Admission{    
+Patient_age=0;
+    
+ Schedule_time=0;
+    
+ Name_of_clinics=0;
+    
+ Customer_phone=0;
+
  
  
  --------- code section-----
@@ -51,10 +77,16 @@ Class plan_the_stay{
 }
 Class shift_their_care_to_outpatient_clinics{
   private Address_Of_clinics=0;
-  private  Preventive_care=0;
   private  Policy_number=0;
+  private  Preventive_care=0;
 
-  void Patient_Transfer{
+  void Patient_Transfer{    
+Address_Of_clinics=0;
+    
+ Policy_number=0;
+    
+ Preventive_care=0;
+
  
  
  --------- code section-----
@@ -64,11 +96,19 @@ Class shift_their_care_to_outpatient_clinics{
 }
 Class emphasize_more_on_preventive_care_to_my_patients{
   private Address_Of_clinics=0;
-  private  Preventive_care=0;
-  private  Acc_type=0;
   private  Hospital_Address=0;
+  private  Acc_type=0;
+  private  Preventive_care=0;
 
-  void Provide_reccommendation{
+  void Provide_reccommendation{    
+Address_Of_clinics=0;
+    
+ Hospital_Address=0;
+    
+ Acc_type=0;
+    
+ Preventive_care=0;
+
  
  
  --------- code section-----
@@ -80,13 +120,19 @@ Class employ_salaried_doctors{
   private hospital_department=0;
   private  Doctor_Name=0;
   private  doctor_licence_number=0;
-  private Coverage_policy=0;
-  private  hospital_department=0;
-  private  Hourly_charge_doctor=0;
+  private hospital_department=0;
   private  Doctor_Name=0;
   private  doctor_licence_number=0;
+  private  Hourly_charge_doctor=0;
+  private  Coverage_policy=0;
 
-  void Recruit_Doctors{
+  void Recruit_Doctors{    
+hospital_department=0;
+    
+ Doctor_Name=0;
+    
+ doctor_licence_number=0;
+
  
  
  --------- code section-----
@@ -94,7 +140,17 @@ Class employ_salaried_doctors{
   }
  
 
-  void Recruit_Visiting_Doctors{
+  void Recruit_Visiting_Doctors{    
+hospital_department=0;
+    
+ Doctor_Name=0;
+    
+ doctor_licence_number=0;
+    
+ Hourly_charge_doctor=0;
+    
+ Coverage_policy=0;
+
  
  
  --------- code section-----
@@ -104,12 +160,22 @@ Class employ_salaried_doctors{
 }
 Class paid_per_service{
   private Patient_age=0;
-  private  Customer_phone=0;
-  private  Patient_prior_condition=0;
-  private  Doctor_Name=0;
   private  Hospital_Address=0;
+  private  Doctor_Name=0;
+  private  Patient_prior_condition=0;
+  private  Customer_phone=0;
 
-  void Contact_doctor{
+  void Contact_doctor{    
+Patient_age=0;
+    
+ Hospital_Address=0;
+    
+ Doctor_Name=0;
+    
+ Patient_prior_condition=0;
+    
+ Customer_phone=0;
+
  
  
  --------- code section-----
@@ -118,11 +184,17 @@ Class paid_per_service{
  
 }
 Class get_the_best_health_plan{
-  private Name_of_clinics=0;
+  private Preventive_care=0;
+  private  Name_of_clinics=0;
   private  List_plan=0;
-  private  Preventive_care=0;
 
-  void Offer_Plan{
+  void Offer_Plan{    
+Preventive_care=0;
+    
+ Name_of_clinics=0;
+    
+ List_plan=0;
+
  
  
  --------- code section-----
@@ -134,12 +206,16 @@ Class find_nearby_doctors_and_hospitals{
   private X=0;
   private Y_Coordinates=0;
   private Patient_age=0;
-  private  Customer_phone=0;
-  private  Patient_prior_condition=0;
-  private  Doctor_Name=0;
   private  Hospital_Address=0;
+  private  Doctor_Name=0;
+  private  Patient_prior_condition=0;
+  private  Customer_phone=0;
 
-  void List_of_hospitals_under_plan{
+  void List_of_hospitals_under_plan{    
+X=0;
+    
+Y_Coordinates=0;
+
  
  
  --------- code section-----
@@ -147,7 +223,17 @@ Class find_nearby_doctors_and_hospitals{
   }
  
 
-  void Contact_doctor{
+  void Contact_doctor{    
+Patient_age=0;
+    
+ Hospital_Address=0;
+    
+ Doctor_Name=0;
+    
+ Patient_prior_condition=0;
+    
+ Customer_phone=0;
+
  
  
  --------- code section-----
@@ -158,11 +244,21 @@ Class find_nearby_doctors_and_hospitals{
 Class pay_my_medical_bills_online{
   private Discharge_amount=0;
   private  Hospital_Address=0;
-  private  Acc_type=0;
   private  Doctor_Name=0;
+  private  Acc_type=0;
   private  Schedule_time=0;
 
-  void Payment_Process_{
+  void Payment_Process_{    
+Discharge_amount=0;
+    
+ Hospital_Address=0;
+    
+ Doctor_Name=0;
+    
+ Acc_type=0;
+    
+ Schedule_time=0;
+
  
  
  --------- code section-----
@@ -171,10 +267,14 @@ Class pay_my_medical_bills_online{
  
 }
 Class see_my_medical_reports_online{
-  private Schedule_time=0;
-  private  Doctor_available_time=0;
+  private Doctor_available_time=0;
+  private  Schedule_time=0;
 
-  void Schedule_visit{
+  void Schedule_visit{    
+Doctor_available_time=0;
+    
+ Schedule_time=0;
+
  
  
  --------- code section-----
@@ -183,13 +283,17 @@ Class see_my_medical_reports_online{
  
 }
 Class see_my_Doctor{
-  private Schedule_time=0;
-  private  Doctor_available_time=0;
+  private Doctor_available_time=0;
+  private  Schedule_time=0;
   private hospital_department=0;
   private  Doctor_Name=0;
   private  doctor_licence_number=0;
 
-  void Schedule_visit{
+  void Schedule_visit{    
+Doctor_available_time=0;
+    
+ Schedule_time=0;
+
  
  
  --------- code section-----
@@ -197,7 +301,13 @@ Class see_my_Doctor{
   }
  
 
-  void Recruit_Doctors{
+  void Recruit_Doctors{    
+hospital_department=0;
+    
+ Doctor_Name=0;
+    
+ doctor_licence_number=0;
+
  
  
  --------- code section-----
@@ -206,15 +316,25 @@ Class see_my_Doctor{
  
 }
 Class schedule_my_visit_online{
-  private Coverage_policy=0;
-  private  hospital_department=0;
-  private  Hourly_charge_doctor=0;
+  private hospital_department=0;
   private  Doctor_Name=0;
   private  doctor_licence_number=0;
-  private Schedule_time=0;
-  private  Doctor_available_time=0;
+  private  Hourly_charge_doctor=0;
+  private  Coverage_policy=0;
+  private Doctor_available_time=0;
+  private  Schedule_time=0;
 
-  void Recruit_Visiting_Doctors{
+  void Recruit_Visiting_Doctors{    
+hospital_department=0;
+    
+ Doctor_Name=0;
+    
+ doctor_licence_number=0;
+    
+ Hourly_charge_doctor=0;
+    
+ Coverage_policy=0;
+
  
  
  --------- code section-----
@@ -222,7 +342,11 @@ Class schedule_my_visit_online{
   }
  
 
-  void Schedule_visit{
+  void Schedule_visit{    
+Doctor_available_time=0;
+    
+ Schedule_time=0;
+
  
  
  --------- code section-----

@@ -1,6 +1,6 @@
 
 import json
-
+import sqlite3
 import nltk
 from nltk.cluster.util import cosine_distance
 from stop_words import get_stop_words
@@ -181,7 +181,7 @@ stopWords = get_stop_words('english')
 # List of words to be ignored for text similarity
 stopWords.extend(["The","This","That",".","!","?","deals","use","case","function"])
 
-def compute_text_similarity(text1, text2, text1tags, text2tags):
+def compute_text_similarity(text1tags, text2tags):
     """ Compute text similarity using cosine
     """
     #stemming is the process for reducing inflected (or sometimes derived) words to their stem, base or root form
@@ -675,6 +675,23 @@ SimMean = extract_bestmatch(SimMean,requirements_df,domain_df,dataelements_df)
 SimMean.to_excel(writer, sheet_name='Sheet1',index=False)
 writer.save()'''
 
+def create_connection(db_file):
+    """ create a database connection to the SQLite database
+        specified by db_file
+    :param db_file: database file
+    :return: Connection object or None
+    """
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except ValueError as e:
+        print(e)
+ 
+    return None
+
+
+conn=create_connection("../db/brd.db") 
+cur=conn.cursor()   
 
 
 
@@ -688,14 +705,42 @@ with open("../output/code_skeleton.txt","w") as fp:
         for ch in unwanted_chars:
             dataelements=dataelements.replace(ch,"")
         fp.write("Class "+str(class_name).strip().replace(' ', '_')+"{\n")
-        if len(dataelements) > 0 :
-            for element in dataelements.split(','):
-                 fp.write("  private "+element+"=0;\n")
-        for fct in fct_names:
-            fp.write("\n  void "+str(fct).replace(' ', '_')+'{'+"\n \n \n --------- code section-----"+"\n"+"\n"+"  }"+"\n \n")
-        fp.write("}\n")
+        for element in dataelements.split(','):
+            fp.write("  private "+element+"=0;\n")  
+        ele= ["",""]# to create string array of size 2
+        
+        i=0
+        for element_split in str(rows["Attributes"]).split('}{'):
             
-  
+            for ch in unwanted_chars:
+                element_split=element_split.replace(ch,"")
+            ele[i] = element_split
+            
+            i=1
+        i=0
+        for fct in fct_names:
+            fct=fct.replace(' ','_')
+            fp.write("\n  void "+str(fct).strip().replace(' ', '_')+'{')
+            
+            query_string = "create table if not EXISTS "+str(fct)+'('
+       
+
+            for element in ele[i].split(','):
+                fp.write("    \n"+element+"=0;\n")
+                query_string=query_string+element+" text,"
+            
+            query_string=query_string[:-1]+')'
+            print(query_string)
+            if conn is not None:
+                cur.execute(query_string)
+                conn.commit()
+            fp.write("\n \n \n --------- code section-----"+"\n"+"\n"+"  }"+"\n \n")    
+                
+            i=1           
+
+        fp.write("}\n")    
+                
+conn.close()
             
 temp_df=SimMean[SimMean["ID"].duplicated(keep=False)]
 merged_df=temp_df.astype(str).groupby(temp_df.ID, as_index=False).agg(','.join)
