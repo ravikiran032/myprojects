@@ -398,7 +398,7 @@ def populate_text_similarity_score(artifact_df1, artifact_df2, keywords_column_n
                 matches.append({'ID': artifact2['ID'], 
                             'cosine_score': 0, 
                             'SubjectID':artifact1['ID']})
-                cosine_score = compute_text_similarity(artifact1[heading1],artifact2[heading2],artifact1['Keywords'],artifact2['Keywords'])
+                cosine_score = compute_text_similarity(artifact1['Keywords'],artifact2['Keywords'])
                 matches[index2]["cosine_score"] = cosine_score
        
             sorted_obj = sorted(matches, key=lambda x : x['cosine_score'], reverse=True)
